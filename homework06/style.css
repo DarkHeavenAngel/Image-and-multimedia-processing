@@ -1,0 +1,163 @@
+:root {
+  --pink: #ff3c8e;
+  --pink-glow: rgba(255, 60, 142, 0.6);
+  --bg-dark: #070708;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, var(--bg-dark) 100%), url('background.webp') repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    cursor: none; 
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#custom-cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+}
+
+#custom-cursor img { width: 100%; }
+
+.app-container {  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px 20px 10px 20px; 
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.main-header {
+    margin-bottom: 20px;
+}
+
+.logo-wrapper {
+    width: 240px;  
+    height: 90px; 
+    background: var(--glass);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    margin: 0 auto 15px auto;
+    overflow: hidden;
+    display: flex;
+}
+
+.ui-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.instruction {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    color: var(--pink);
+    font-weight: 800;
+    line-height: 1.4;
+    max-width: 550px;
+    text-shadow: 0 0 15px rgba(255, 60, 142, 0.4);
+}
+
+.instruction span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.counter-card {
+    margin-bottom: 10px;
+}
+
+#counter {
+    font-size: clamp(4rem, 12vw, 7rem);
+    margin: 0;
+    line-height: 1;
+    font-weight: 900;
+    text-shadow: 0 0 20px var(--pink-glow), 0 0 60px var(--pink-glow);
+}
+
+.counter-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.pop-area {
+    flex-grow: 1; 
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.pop-area img#pop-img {
+    width: 320px;
+    max-height: 40vh; 
+    transition: transform 0.05s ease;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    z-index: 10;
+}
+
+.pop-area img.active {
+    transform: scale(1.04); 
+}
+
+.side-pop {
+    width: 120px;
+    height: auto;
+    opacity: 0.7;
+    pointer-events: none;
+    margin-bottom: 50px;
+}
+
+.side-pop.left {
+    margin-right: 20px;
+}
+
+.side-pop.right {
+    margin-left: 20px;
+}
+
+footer {
+    padding-bottom: 20px;
+}
+
+.glass-pill {
+    background: rgba(0,0,0,0.6);
+    border: 1px solid var(--glass-border);
+    padding: 10px 22px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    backdrop-filter: blur(5px);
+}
+
+.mini-gif { width: 22px; border-radius: 50%; }
+

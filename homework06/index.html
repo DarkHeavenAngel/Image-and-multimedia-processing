@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiFlex Pop-Cat</title>
+    
+    <link rel="icon" href="favicon.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="custom-cursor">
+        <img src="popcorn.gif" alt="popcorn cursor">
+    </div>
+
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo-wrapper">
+                <img src="logo.webp" alt="MultiFlex" class="ui-logo">
+            </div>
+            <div class="instruction">
+                Більше попкорну — менша ціна! <br> 
+                <span>Годуй кота та відкривай секретні знижки MultiFlex.</span>
+            </div>
+        </header>
+
+        <div class="counter-card">
+            <span class="counter-label">Попкорну з'їдено</span>
+            <h1 id="counter">0</h1>
+        </div>
+
+        <main class="pop-area">
+            <img src="popcorn_pop.gif" class="side-pop left" alt="popcorn pop">
+            
+            <img src="cat_closed.webp" id="pop-img" alt="Pop Cat" draggable="false">
+            
+            <img src="popcorn_pop.gif" class="side-pop right" alt="popcorn pop">
+        </main>
+
+        <footer>
+            <div class="glass-pill">
+                <img src="popcorn.gif" class="mini-gif" alt="popcorn animation">
+                <span>MultiFlex INTERACTIVE — 2026</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const img = document.getElementById('pop-img');
+        const counterDisplay = document.getElementById('counter');
+        const instruction = document.querySelector('.instruction');
+        const cursor = document.getElementById('custom-cursor');
+        let count = 0;
+
+        const imgClosed = "cat_closed.webp";
+        const imgOpen = "cat_open.webp";
+
+        function pop() {
+            if (img.src.includes(imgClosed)) {
+                count++;
+                counterDisplay.innerText = count;
+                img.src = imgOpen;
+                img.classList.add('active');
+
+                if (count === 100) {
+                    instruction.innerHTML = "ТВІЙ КОД НА ЗНИЖКУ: <span style='color:#fff'>MULTI100</span>";
+                    instruction.style.color = "#ff3c8e";
+                }
+            }
+        }
+
+        function unpop() {
+            img.src = imgClosed;
+            img.classList.remove('active');
+        }
+
+        window.addEventListener('mousedown', (e) => { if(e.button === 0) pop(); });
+        window.addEventListener('mouseup', unpop);
+        window.addEventListener('keydown', (e) => { if(!e.repeat) pop(); });
+        window.addEventListener('keyup', unpop);
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
